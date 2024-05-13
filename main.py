@@ -14,9 +14,10 @@ def load_image(image_file):
     img=Image.open(image_file)
     return img
 
-key_path="./key.txt"
-with open (key_path,'r') as f:
-    pswd=f.read()
+# key_path="./key.txt"
+# with open (key_path,'r') as f:
+#     pswd=f.read()
+pswd=st.secrets["key"]
 
 smtp_port = 587                 # Standard secure SMTP port
 smtp_server = "smtp.gmail.com"
@@ -68,6 +69,7 @@ if image_file is not None:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
             server.login(email_from, pswd)
             server.sendmail(email_from, email_to, text)
+            server.quit()
 
         st.success("Saved File")
 
