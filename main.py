@@ -36,7 +36,7 @@ def send_email(sending_to,problem,num,specific_location,name):
     smtp_server = "smtp.gmail.com"
     email_from = "yossithecat@gmail.com"
     email_to = "yvolind@gmail.com"
-    subject = f"דווח ליקוי חדש מספר {num} {sending_to}"
+    subject = f"דווח ליקוי חדש מספר {num} "
 
     body = f"""
     שם השולח:
@@ -48,7 +48,7 @@ def send_email(sending_to,problem,num,specific_location,name):
     """
     msg = MIMEMultipart()
     msg['From'] = email_from
-    msg['To'] = email_to
+    msg['To'] = sending_to
     msg['Subject'] = subject
     msg.attach(MIMEText(body, 'plain'))
 
